@@ -162,6 +162,11 @@ html.loading { overflow: hidden; }
 .chrome.is-visible { transform: translateY(0); }
 /* Sin JS el chrome debe verse siempre (fallback) */
 html:not(.js) .chrome { position: sticky; transform: none; }
+/* En movil (burger) el header queda siempre visible; el efecto de
+   hero limpio al tope es solo de desktop */
+@media (max-width: 1080px) {
+  .chrome { position: sticky; transform: none; }
+}
 
 /* ---------- Topbar ---------- */
 .topbar {
