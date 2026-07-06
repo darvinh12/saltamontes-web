@@ -1,0 +1,44 @@
+CARPETA DE FOTOS Y VIDEOS
+=========================
+
+Deja aqui las fotos con EXACTAMENTE estos nombres y la web las toma sola.
+Los videos van en la carpeta videos/ del proyecto.
+
+FOTOS (images/)
+
+  hero-poster.jpg   Fotograma de respaldo del video del hero (16:9, 1600 px).
+  cafe-1.jpg        Lote Los Andes (foto del cafe o del empaque). 800x600 aprox.
+  cafe-2.jpg        Finca La Cumbre. 800x600 aprox.
+  cafe-3.jpg        Microlote Reserva. 800x600 aprox.
+  g-molido.jpg      Cano Amarillo (cafe molido). 800x600 aprox.
+  g-vaso.jpg        Niebla de Paramo (filtrado en vaso). 800x600 aprox.
+  g-taza.jpg        Espresso Saltamontes (taza servida). 800x600 aprox.
+  editorial.jpg     Cafetal o montana andina, horizontal ancha. 1800x1000 aprox.
+  raul.jpg          Retrato de Raul, vertical. 1000x1300 aprox.
+                    OJO: la foto actual es stock, NO es Raul. Cambiarla pronto.
+  saco.jpg          Saco de cafe con grano. Horizontal.
+  filtrado.jpg      Barra de filtrado o mesa de cata. Horizontal.
+  barra.jpg         Detalle de espresso / molienda. Vertical.
+  granos-textura.jpg  Textura de granos tostados (fondo del Club). Se ve oscurecida.
+  hero.jpg          Taza servida, vertical (seccion de contacto). 1000x1100 aprox.
+
+VIDEOS (videos/)
+
+  hero.mp4          Video principal del hero. Horizontal 16:9.
+  cafetal-1.mp4     Video de fondo del manifiesto (banda oscura con la cita).
+
+DONDE DESCARGAR MATERIAL LIBRE PARA USO COMERCIAL
+
+  Fotos:   unsplash.com  |  pexels.com  |  pixabay.com
+  Videos:  pexels.com/videos  |  coverr.co  |  mixkit.co  |  pixabay.com/videos
+
+  Todos permiten uso comercial sin atribucion obligatoria. Aun asi, registra
+  cada archivo nuevo en CREDITS.md para llevar control de origen.
+
+CONSEJOS
+
+  - Comprime las fotos antes de subirlas (tinypng.com o squoosh.app).
+    Objetivo: menos de 200 KB por foto.
+  - Los videos de fondo pesan mucho. Comprimelos a 1600 px de ancho, sin
+    audio, y que no pasen de 6 MB (handbrake.fr o cualquier conversor).
+  - Fotos propias > fotos de banco: es lo que hace creible la marca.

@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Saltamontes — Tostadores de café de especialidad</title>
+<meta name="description" content="Saltamontes, tostadores de café de especialidad de los Andes venezolanos. Lotes de origen evaluados por un Q Arabica Grader, cursos, asesorías y café para cafeterías. Pedidos por WhatsApp." />
+<meta name="theme-color" content="#fbf9f4" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Saltamontes — Tostadores de café de especialidad" />
+<meta property="og:description" content="Café de origen venezolano, tostado y catado por un Q Arabica Grader. De la montaña a la taza." />
+<meta property="og:image" content="images/hero-poster.jpg" />
+<meta property="og:locale" content="es_VE" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400..600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+<link rel="icon" href="images/saltamontes-mark.png" />
+
+<script>
+/* Flags pre-render: evita FOUC del preloader y de los reveals.
+   Sin JS la pagina se muestra completa y sin preloader. */
+(function () {
+  var d = document.documentElement;
+  d.classList.add("js");
+  var seen = null;
+  try { seen = sessionStorage.getItem("sm-intro"); } catch (e) { seen = "1"; }
+  var rm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!seen && !rm) {
+    d.classList.add("loading");
+    /* Salvavidas: si GSAP no llega a cargar, la pagina se muestra igual */
+    setTimeout(function () { d.classList.remove("loading"); }, 3000);
+  }
+})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<!-- ============ PRELOADER ============ -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <img class="preloader__mark" src="images/saltamontes-mark.png" alt="" width="72" height="72" />
+    <span class="preloader__count" id="preCount">0</span>
+    <span class="preloader__label">Tostadores de café · コーヒー焙煎所</span>
+  </div>
+</div>
+
+<!-- ============ CURSOR CUSTOM (solo desktop con puntero fino) ============ -->
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label" id="cursorLabel"></span></div>
+
+<!-- ============ TOPBAR ============ -->
+<div class="topbar" id="top">
+  <div class="wrap topbar__row">
+    <span>Café de especialidad de los Andes venezolanos</span>
+    <span class="topbar__sep" aria-hidden="true"></span>
+    <span class="hide-sm">Tostado por un Q Arabica Grader</span>
+    <span class="topbar__sep hide-sm" aria-hidden="true"></span>
+    <span class="hide-sm">Pedidos y envíos por WhatsApp</span>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="hdr" id="header">
+  <div class="wrap hdr__row">
+    <a class="brand" href="#top" aria-label="Saltamontes, inicio">
+      <img src="images/saltamontes-mark.png" alt="" width="34" height="34" />
+      <span class="brand__word">Saltamontes</span>
+    </a>
+
+    <nav class="hdr__nav" aria-label="Principal">
+      <ul class="nav">
+        <li class="nav__item has-mega">
+          <button class="nav__link" id="megaTrigger" aria-expanded="false" aria-controls="megaCafe">
+            Café
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </li>
+        <li class="nav__item"><a class="nav__link" href="#origen">Origen</a></li>
+        <li class="nav__item"><a class="nav__link" href="#club">Club</a></li>
+        <li class="nav__item"><a class="nav__link" href="#aprende">Aprende</a></li>
+        <li class="nav__item"><a class="nav__link" href="#mayorista">Mayorista</a></li>
+        <li class="nav__item"><a class="nav__link" href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div class="hdr__act">
+      <a class="btn btn--sm js-wa" data-wa="Hola, vi la web de Saltamontes y quiero información.">
+        <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.1 14.9l-.4-.2-2.8.7.8-2.7-.2-.4A8 8 0 0 1 12 4zm4.5 9.9c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c2.6 1 2.6.7 3.1.6a2.5 2.5 0 0 0 1.7-1.2 2 2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg>
+        WhatsApp
+      </a>
+      <button class="icon-btn hdr__burger" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mega menú de Café -->
+  <div class="mega" id="megaCafe" hidden>
+    <div class="wrap mega__grid">
+      <div class="mega__col">
+        <h4 class="mega__head">Por proceso</h4>
+        <a href="#tienda" data-filter="lavado">Lavado</a>
+        <a href="#tienda" data-filter="honey">Honey</a>
+        <a href="#tienda" data-filter="natural">Natural</a>
+        <a href="#tienda" data-filter="todos">Ver todo el café</a>
+      </div>
+      <div class="mega__col">
+        <h4 class="mega__head">Por origen</h4>
+        <a href="#tienda">Táchira</a>
+        <a href="#tienda">Mérida</a>
+        <a href="#tienda">Trujillo</a>
+      </div>
+      <div class="mega__col">
+        <h4 class="mega__head">Servicios</h4>
+        <a href="#club">Club Saltamontes</a>
+        <a href="#aprende">Cursos y catas</a>
+        <a href="#mayorista">Para cafeterías</a>
+      </div>
+      <a class="mega__feat" href="#tienda">
+        <img src="images/cafe-3.jpg" alt="Microlote Reserva, cerezas de café maduras" width="480" height="320" loading="lazy" />
+        <span class="mega__feat-tag">Edición limitada</span>
+        <span class="mega__feat-name">Microlote Reserva · 89 pts</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Menú móvil -->
+<div class="mnav" id="mobileMenu" role="dialog" aria-label="Menú de navegación">
+  <div class="mnav__top">
+    <span class="mnav__title">Menú</span>
+    <button class="icon-btn" id="navClose" aria-label="Cerrar menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <a href="#tienda">Café</a>
+  <a href="#origen">Origen</a>
+  <a href="#club">Club</a>
+  <a href="#aprende">Aprende</a>
+  <a href="#mayorista">Mayorista</a>
+  <a href="#contacto">Contacto</a>
+  <a class="btn btn--block js-wa" data-wa="Hola, vi la web de Saltamontes y quiero información.">Escríbenos por WhatsApp</a>
+</div>
+
+<main id="main">
+
+<!-- ============ HERO DE VIDEO ============ -->
+<section class="hero" aria-label="Saltamontes, tostadores de café">
+  <div class="hero__media" data-hero-media>
+    <video autoplay muted loop playsinline preload="metadata" poster="images/hero-poster.jpg" aria-hidden="true">
+      <source src="videos/hero.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__scrim" aria-hidden="true"></div>
+  </div>
+
+  <div class="wrap hero__body">
+    <img class="hero__logo" src="images/saltamontes-logo.png" alt="Saltamontes, tostadores de café" width="300" height="104" />
+    <h1 class="hero__title" data-split>El café venezolano, llevado a su punto más alto.</h1>
+    <p class="hero__notes mono">Destacado — Microlote Reserva <b>|</b> Fresa <b>|</b> Vino tinto <b>|</b> Chocolate oscuro</p>
+    <div class="hero__cta">
+      <a class="btn btn--light js-wa" data-wa="Hola, quiero el Microlote Reserva destacado de Saltamontes. ¿Disponibilidad y precio?" data-cursor="Pedir">Pedir este café</a>
+      <a class="btn btn--ghost-light" href="#tienda" data-cursor="Ver">Ver todos los lotes</a>
+    </div>
+  </div>
+
+  <div class="hero__foot mono" aria-hidden="true">
+    <span>Andes de Venezuela</span>
+    <span>1.350 — 1.750 msnm</span>
+    <span>Q Arabica Grader</span>
+  </div>
+</section>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track" data-ticker>
+    <span>Microlote Reserva · 89 pts · Natural</span><i></i>
+    <span>Finca La Cumbre · 88 pts · Honey</span><i></i>
+    <span>Niebla de Páramo · 87 pts · Honey</span><i></i>
+    <span>Lote Los Andes · 86 pts · Lavado</span><i></i>
+    <span>Caño Amarillo · 85 pts · Lavado</span><i></i>
+    <span>Espresso Saltamontes · 84 pts · Mezcla de casa</span><i></i>
+  </div>
+</div>
+
+<!-- ============ TIENDA ============ -->
+<section class="sec" id="tienda">
+  <div class="wrap">
+    <header class="sechead reveal">
+      <p class="ey">Tienda <span class="jp">豆</span> Café de origen</p>
+      <h2>Lotes catados y tostados por nosotros</h2>
+      <p class="sechead__sub">Trabajamos lotes pequeños de fincas de altura en Táchira, Mérida y Trujillo. Cada uno pasa por mesa de cata con protocolo SCA antes de tostarse. Escoge el tuyo y lo coordinamos por WhatsApp.</p>
+    </header>
+
+    <div class="filters reveal" role="group" aria-label="Filtrar café por proceso">
+      <button class="chip is-active" data-filter="todos" aria-pressed="true">Todos</button>
+      <button class="chip" data-filter="lavado" aria-pressed="false">Lavado</button>
+      <button class="chip" data-filter="honey" aria-pressed="false">Honey</button>
+      <button class="chip" data-filter="natural" aria-pressed="false">Natural</button>
+    </div>
+
+    <div class="shop" id="shopGrid">
+
+      <article class="product reveal" data-proc="lavado">
+        <div class="product__media" data-tilt>
+          <img src="images/cafe-1.jpg" alt="Lote Los Andes, café en grano" width="800" height="600" loading="lazy" />
+          <span class="product__badge">Favorito de la casa</span>
+        </div>
+        <div class="product__body">
+          <div class="product__spec mono"><span>1.450 msnm</span><span>Táchira</span><span>SCA 86</span></div>
+          <h3 class="product__name">Lote Los Andes</h3>
+          <p class="product__notes mono">Panela <b>|</b> Mandarina <b>|</b> Cacao</p>
+          <p class="product__roast">Tueste medio · Proceso lavado</p>
+          <div class="product__sizes" role="group" aria-label="Presentación">
+            <button class="size is-active" data-size="250 g" aria-pressed="true">250 g</button>
+            <button class="size" data-size="1 kg" aria-pressed="false">1 kg</button>
+          </div>
+          <div class="product__foot">
+            <span class="product__price mono">Precio Ref.</span>
+            <a class="btn btn--sm js-wa" data-wa="Hola, quiero el Lote Los Andes (lavado)" data-size-msg data-cursor="Pedir">Pedir</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product reveal" data-proc="honey">
+        <div class="product__media" data-tilt>
+          <img src="images/cafe-2.jpg" alt="Finca La Cumbre, café servido" width="800" height="600" loading="lazy" />
+        </div>
+        <div class="product__body">
+          <div class="product__spec mono"><span>1.600 msnm</span><span>Mérida</span><span>SCA 88</span></div>
+          <h3 class="product__name">Finca La Cumbre</h3>
+          <p class="product__notes mono">Durazno <b>|</b> Miel <b>|</b> Almendra</p>
+          <p class="product__roast">Tueste claro · Proceso honey</p>
+          <div class="product__sizes" role="group" aria-label="Presentación">
+            <button class="size is-active" data-size="250 g" aria-pressed="true">250 g</button>
+            <button class="size" data-size="1 kg" aria-pressed="false">1 kg</button>
+          </div>
+          <div class="product__foot">
+            <span class="product__price mono">Precio Ref.</span>
+            <a class="btn btn--sm js-wa" data-wa="Hola, quiero el café Finca La Cumbre (honey)" data-size-msg data-cursor="Pedir">Pedir</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product reveal" data-proc="natural">
+        <div class="product__media" data-tilt>
+          <img src="images/cafe-3.jpg" alt="Microlote Reserva, cerezas de café maduras" width="800" height="600" loading="lazy" />
+          <span class="product__badge product__badge--accent">Edición limitada</span>
+        </div>
+        <div class="product__body">
+          <div class="product__spec mono"><span>1.700 msnm</span><span>Mérida</span><span>SCA 89</span></div>
+          <h3 class="product__name">Microlote Reserva</h3>
+          <p class="product__notes mono">Fresa <b>|</b> Vino tinto <b>|</b> Chocolate oscuro</p>
+          <p class="product__roast">Tueste claro · Natural de fermentación controlada</p>
+          <div class="product__sizes" role="group" aria-label="Presentación">
+            <button class="size is-active" data-size="250 g" aria-pressed="true">250 g</button>
+            <button class="size" data-size="1 kg" aria-pressed="false">1 kg</button>
+          </div>
+          <div class="product__foot">
+            <span class="product__price mono">Precio Ref.</span>
+            <a class="btn btn--sm js-wa" data-wa="Hola, quiero el Microlote Reserva (natural)" data-size-msg data-cursor="Pedir">Pedir</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product reveal" data-proc="lavado">
+        <div class="product__media" data-tilt>
+          <img src="images/g-molido.jpg" alt="Caño Amarillo, café molido en portafiltro" width="800" height="600" loading="lazy" />
+          <span class="product__badge">Nuevo</span>
+        </div>
+        <div class="product__body">
+          <div class="product__spec mono"><span>1.350 msnm</span><span>Trujillo</span><span>SCA 85</span></div>
+          <h3 class="product__name">Caño Amarillo</h3>
+          <p class="product__notes mono">Naranja <b>|</b> Caña <b>|</b> Nuez</p>
+          <p class="product__roast">Tueste medio · Proceso lavado</p>
+          <div class="product__sizes" role="group" aria-label="Presentación">
+            <button class="size is-active" data-size="250 g" aria-pressed="true">250 g</button>
+            <button class="size" data-size="1 kg" aria-pressed="false">1 kg</button>
+          </div>
+          <div class="product__foot">
+            <span class="product__price mono">Precio Ref.</span>
+            <a class="btn btn--sm js-wa" data-wa="Hola, quiero el café Caño Amarillo (lavado)" data-size-msg data-cursor="Pedir">Pedir</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product reveal" data-proc="honey">
+        <div class="product__media" data-tilt>
+          <img src="images/g-vaso.jpg" alt="Niebla de Páramo, café filtrado en vaso" width="800" height="600" loading="lazy" />
+        </div>
+        <div class="product__body">
+          <div class="product__spec mono"><span>1.750 msnm</span><span>Mérida</span><span>SCA 87</span></div>
+          <h3 class="product__name">Niebla de Páramo</h3>
+          <p class="product__notes mono">Flor de café <b>|</b> Papelón <b>|</b> Ciruela</p>
+          <p class="product__roast">Tueste claro · Proceso honey</p>
+          <div class="product__sizes" role="group" aria-label="Presentación">
+            <button class="size is-active" data-size="250 g" aria-pressed="true">250 g</button>
+            <button class="size" data-size="1 kg" aria-pressed="false">1 kg</button>
+          </div>
+          <div class="product__foot">
+            <span class="product__price mono">Precio Ref.</span>
+            <a class="btn btn--sm js-wa" data-wa="Hola, quiero el café Niebla de Páramo (honey)" data-size-msg data-cursor="Pedir">Pedir</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product reveal" data-proc="lavado">
+        <div class="product__media" data-tilt>
+          <img src="images/g-taza.jpg" alt="Espresso Saltamontes recién extraído" width="800" height="600" loading="lazy" />
+          <span class="product__badge">Favorito de barras</span>
+        </div>
+        <div class="product__body">
+          <div class="product__spec mono"><span>1.400+ msnm</span><span>Andes</span><span>SCA 84</span></div>
+          <h3 class="product__name">Espresso Saltamontes</h3>
+          <p class="product__notes mono">Cacao <b>|</b> Avellana <b>|</b> Caramelo</p>
+          <p class="product__roast">Tueste expresivo · Mezcla de casa para espresso</p>
+          <div class="product__sizes" role="group" aria-label="Presentación">
+            <button class="size is-active" data-size="250 g" aria-pressed="true">250 g</button>
+            <button class="size" data-size="1 kg" aria-pressed="false">1 kg</button>
+          </div>
+          <div class="product__foot">
+            <span class="product__price mono">Precio Ref.</span>
+            <a class="btn btn--sm js-wa" data-wa="Hola, quiero el Espresso Saltamontes (mezcla de casa)" data-size-msg data-cursor="Pedir">Pedir</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="shop__more reveal">
+      <a class="link-arrow js-wa" data-wa="Hola, ¿me pasan la lista completa de lotes disponibles con precios?">
+        Pídenos la lista completa de lotes
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </p>
+  </div>
+</section>
+
+<!-- ============ ORIGEN (spotlight con pinning) ============ -->
+<section class="sec sec--line" id="origen">
+  <div class="wrap origin">
+    <div class="origin__text" data-pin>
+      <p class="ey">Origen <span class="jp">山</span> Los Andes de Venezuela</p>
+      <h2 data-split>Sabemos de dónde viene cada grano</h2>
+      <p>Detrás de Saltamontes está Raúl Martínez, caficultor, Q Arabica Grader y Q Processing Expert. Camina las fincas, evalúa cada lote en mesa de cata y lo tuesta para que sepa a lo que es.</p>
+      <p>Altura, sombra, cosecha a mano y procesos hechos con paciencia. Eso separa un café correcto de uno que no se te olvida.</p>
+      <div class="origin__tags mono">
+        <span>Caficultor</span><span>Q Grader</span><span>Q Processing</span><span>Formador SCA</span>
+      </div>
+      <a class="btn js-wa" data-wa="Hola, quiero conocer más del origen de los cafés de Saltamontes.">Conversemos de origen</a>
+    </div>
+
+    <div class="origin__stack">
+      <figure class="origin__fig reveal-img">
+        <img src="images/editorial.jpg" alt="Cafetal en la montaña andina" width="1800" height="1000" loading="lazy" />
+        <figcaption class="mono">Cafetal de altura · cosecha selectiva</figcaption>
+      </figure>
+      <figure class="origin__fig reveal-img">
+        <!-- TEMPORAL: foto de stock. Reemplazar images/raul.jpg por un retrato real de Raul. -->
+        <img src="images/raul.jpg" alt="Caficultor en el cafetal" width="1000" height="1333" loading="lazy" />
+        <figcaption class="mono">En el cafetal · Andes venezolanos</figcaption>
+      </figure>
+      <figure class="origin__fig reveal-img">
+        <img src="images/saco.jpg" alt="Saco de yute con café en grano tostado" width="1600" height="1067" loading="lazy" />
+        <figcaption class="mono">Lotes pequeños · trazables</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MANIFIESTO (banda de video) ============ -->
+<section class="manifesto" aria-label="Manifiesto">
+  <div class="manifesto__media" aria-hidden="true">
+    <video muted loop playsinline preload="none" poster="images/editorial.jpg" data-lazy-video>
+      <source data-src="videos/cafetal-1.mp4" type="video/mp4" />
+    </video>
+    <div class="manifesto__scrim"></div>
+  </div>
+  <blockquote class="wrap manifesto__quote">
+    <p class="manifesto__line" data-split-words>"Aquí siempre hubo café bueno. Lo que faltaba era gente terca que lo cuidara hasta el final."</p>
+    <footer class="mono">Raúl Martínez · Q Arabica Grader</footer>
+  </blockquote>
+</section>
+
+<!-- ============ CLUB SALTAMONTES ============ -->
+<section class="sec club" id="club">
+  <div class="club__bg" aria-hidden="true">
+    <img src="images/granos-textura.jpg" alt="" width="1600" height="1236" loading="lazy" />
+  </div>
+  <div class="wrap club__inner">
+    <div class="club__text reveal">
+      <p class="ey ey--light">Suscripción <span class="jp">定期便</span> Club Saltamontes</p>
+      <h2 data-split>Tu café llega solo, recién tostado</h2>
+      <p>Eliges tus lotes y la frecuencia, nosotros tostamos y despachamos. Sin pasarelas ni formularios, todo se coordina directo por WhatsApp.</p>
+      <ul class="club__perks">
+        <li><span class="mono">01</span> Entrega mensual o quincenal, en grano o molido a tu método</li>
+        <li><span class="mono">02</span> Precio preferencial fijo mientras dure tu suscripción</li>
+        <li><span class="mono">03</span> Acceso primero a microlotes y ediciones limitadas</li>
+      </ul>
+      <a class="btn btn--light js-wa" data-wa="Hola, quiero unirme al Club Saltamontes. ¿Cómo funciona la suscripción?" data-cursor="Unirme">Unirme al club</a>
+    </div>
+    <div class="club__stat reveal" aria-hidden="true">
+      <span class="club__big mono" data-counter="72">0</span>
+      <span class="club__cap">horas máximo entre el tueste y tu despacho</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APRENDE ============ -->
+<section class="sec sec--line" id="aprende">
+  <div class="wrap learn">
+    <figure class="learn__media reveal-img">
+      <img src="images/filtrado.jpg" alt="Barra de filtrado con Chemex y tetera de cuello de ganso" width="1600" height="1067" loading="lazy" />
+      <figcaption class="mono">Práctica real: barra, mesa de cata y tostador</figcaption>
+    </figure>
+
+    <div class="learn__list">
+      <header class="sechead sechead--tight reveal">
+        <p class="ey">Formación <span class="jp">学</span> Cursos y catas</p>
+        <h2>Aprende con quien lo hace todos los días</h2>
+        <p class="sechead__sub">Nada de teoría de libro. Lo que se enseña es lo que pasa en la finca, en la mesa de cata y frente al tostador. Presencial o en línea.</p>
+      </header>
+
+      <ol class="courses">
+        <li class="course reveal">
+          <span class="course__n mono">01</span>
+          <div>
+            <h3>Introducción al café de especialidad</h3>
+            <p class="mono course__meta">1 sesión · 4 h · Presencial / Online</p>
+          </div>
+          <a class="btn btn--sm js-wa" data-wa="Hola, quiero reservar cupo en el curso 'Introducción al café de especialidad'. ¿Próximas fechas?" data-cursor="Reservar">Reservar</a>
+        </li>
+        <li class="course reveal">
+          <span class="course__n mono">02</span>
+          <div>
+            <h3>Catación y análisis sensorial</h3>
+            <p class="mono course__meta">2 sesiones · 8 h · Presencial</p>
+          </div>
+          <a class="btn btn--sm js-wa" data-wa="Hola, me interesa el curso 'Catación y análisis sensorial'. ¿Fechas y costo?" data-cursor="Reservar">Reservar</a>
+        </li>
+        <li class="course reveal">
+          <span class="course__n mono">03</span>
+          <div>
+            <h3>Métodos de filtrado y barismo</h3>
+            <p class="mono course__meta">1 sesión · 5 h · Presencial / Online</p>
+          </div>
+          <a class="btn btn--sm js-wa" data-wa="Hola, quiero el curso 'Métodos de filtrado y barismo'. ¿Cuándo es el próximo?" data-cursor="Reservar">Reservar</a>
+        </li>
+        <li class="course reveal">
+          <span class="course__n mono">04</span>
+          <div>
+            <h3>Procesos y fermentaciones post-cosecha</h3>
+            <p class="mono course__meta">2 sesiones · 10 h · En finca · Para productores</p>
+          </div>
+          <a class="btn btn--sm js-wa" data-wa="Hola, soy productor y me interesa el curso de procesos y fermentaciones post-cosecha." data-cursor="Reservar">Reservar</a>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MAYORISTA ============ -->
+<section class="sec sec--line" id="mayorista">
+  <div class="wrap split">
+    <div class="split__text reveal">
+      <p class="ey">Mayorista <span class="jp">卸</span> Para cafeterías</p>
+      <h2 data-split>Café que sostiene tu carta, baristas que saben usarlo</h2>
+      <p>Si tienes una cafetería, un restaurante o un hotel, te acompañamos con el grano y con el equipo. No solo vendemos café, dejamos tu barra funcionando.</p>
+      <ul class="checks">
+        <li>Grano por volumen con precio mayorista y entregas fijas</li>
+        <li>Tueste calibrado a tu método, espresso o filtrado</li>
+        <li>Capacitación de baristas y recetas ajustadas en tu barra</li>
+        <li>Fichas técnicas de cada café para tu carta</li>
+      </ul>
+      <a class="btn js-wa" data-wa="Hola, tengo una cafetería y quiero el catálogo mayorista de Saltamontes y condiciones de volumen." data-cursor="Catálogo">Pedir catálogo mayorista</a>
+    </div>
+    <figure class="split__media reveal-img">
+      <img src="images/barra.jpg" alt="Portafiltros con espresso, café molido y grano" width="1200" height="1800" loading="lazy" />
+      <figcaption class="mono">Espresso · molienda · grano</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ CREDENCIALES ============ -->
+<section class="sec creds" id="credenciales">
+  <div class="wrap">
+    <header class="sechead reveal">
+      <p class="ey">Criterio <span class="jp">証</span> Credenciales</p>
+      <h2>El respaldo detrás de cada tueste</h2>
+    </header>
+    <div class="creds__grid">
+      <div class="cred reveal">
+        <span class="cred__n mono"><span data-counter="89">0</span></span>
+        <span class="cred__l">Puntaje SCA más alto de nuestros microlotes</span>
+      </div>
+      <div class="cred reveal">
+        <span class="cred__n mono"><span data-counter="2">0</span>×Q</span>
+        <span class="cred__l">Certificaciones Q: Arabica Grader y Processing Expert</span>
+      </div>
+      <div class="cred reveal">
+        <span class="cred__n mono">+<span data-counter="28">0</span>k</span>
+        <span class="cred__l">Personas en la comunidad de Instagram</span>
+      </div>
+      <div class="cred reveal">
+        <span class="cred__n mono"><span data-counter="100">0</span>%</span>
+        <span class="cred__l">Origen venezolano, trazable hasta la finca</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIOS ============ -->
+<!-- REEMPLAZAR por testimonios reales de clientes (nombre + rol/ciudad). -->
+<section class="sec sec--line" aria-label="Testimonios">
+  <div class="wrap">
+    <header class="sechead reveal">
+      <p class="ey">Lo que dicen <span class="jp">声</span> Clientes</p>
+      <h2>Gente que ya cambió su café</h2>
+    </header>
+  </div>
+  <div class="quotes" data-drag-scroll tabindex="0" role="region" aria-label="Carrusel de testimonios, desplazable">
+    <figure class="quote">
+      <p class="quote__txt">Cambiamos a los lotes de Saltamontes y los clientes lo notaron a la semana. El acompañamiento con los baristas marcó la diferencia.</p>
+      <figcaption class="mono">Cafetería de especialidad · Caracas</figcaption>
+    </figure>
+    <figure class="quote">
+      <p class="quote__txt">Nos ayudaron a subir la finca de 79 a 85 puntos en una cosecha. Ahora sí vendemos como café de especialidad.</p>
+      <figcaption class="mono">Productor · Mérida</figcaption>
+    </figure>
+    <figure class="quote">
+      <p class="quote__txt">El curso de catación me abrió la cabeza. Nunca volví a tomar café igual. Explican clarísimo y sin poses.</p>
+      <figcaption class="mono">Alumna · Análisis sensorial</figcaption>
+    </figure>
+    <figure class="quote">
+      <p class="quote__txt">El club es lo mejor que le pasó a mi cocina. Café recién tostado cada mes sin tener que pensarlo.</p>
+      <figcaption class="mono">Suscriptor del club · Valencia</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ CATEGORÍAS ============ -->
+<section class="cats" aria-label="Explorar por categoría">
+  <a class="cat" href="#tienda" data-cursor="Ver">
+    <img src="images/cafe-1.jpg" alt="" width="800" height="600" loading="lazy" />
+    <span class="cat__name">Café</span>
+    <span class="cat__hint mono">6 lotes activos</span>
+  </a>
+  <a class="cat" href="#aprende" data-cursor="Ver">
+    <img src="images/filtrado.jpg" alt="" width="800" height="533" loading="lazy" />
+    <span class="cat__name">Cursos</span>
+    <span class="cat__hint mono">4 programas</span>
+  </a>
+  <a class="cat js-wa" data-wa="Hola, quiero información sobre asesorías para mi finca, torrefactora o cafetería." data-cursor="Hablar">
+    <img src="images/g-molido.jpg" alt="" width="800" height="600" loading="lazy" />
+    <span class="cat__name">Asesorías</span>
+    <span class="cat__hint mono">Finca · tueste · barra</span>
+  </a>
+  <a class="cat" href="#mayorista" data-cursor="Ver">
+    <img src="images/saco.jpg" alt="" width="800" height="533" loading="lazy" />
+    <span class="cat__name">Mayorista</span>
+    <span class="cat__hint mono">Cafeterías y hoteles</span>
+  </a>
+</section>
+
+<!-- ============ COMUNIDAD / CONTACTO ============ -->
+<section class="sec contact" id="contacto">
+  <div class="wrap contact__inner">
+    <div class="reveal">
+      <p class="ey">Comunidad <span class="jp">仲間</span> Contacto</p>
+      <h2 data-split>Hablemos de café</h2>
+      <p class="sechead__sub">Compartimos catas, tips y la vida en la montaña con más de 28.000 personas. Síguenos en Instagram o escríbenos directo, respondemos nosotros mismos.</p>
+      <div class="contact__rows">
+        <a class="contact__row js-wa" data-wa="Hola, vi la web de Saltamontes y quiero conversar sobre café." data-cursor="Chatear">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.1 14.9l-.4-.2-2.8.7.8-2.7-.2-.4A8 8 0 0 1 12 4zm4.5 9.9c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c2.6 1 2.6.7 3.1.6a2.5 2.5 0 0 0 1.7-1.2 2 2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg>
+          Chatear por WhatsApp
+        </a>
+        <a class="contact__row" href="https://www.instagram.com/raulmartinez28" target="_blank" rel="noopener" data-cursor="Seguir">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+          @raulmartinez28
+        </a>
+      </div>
+    </div>
+    <figure class="contact__media reveal-img">
+      <img src="images/hero.jpg" alt="Taza de café de especialidad recién servida" width="1000" height="1100" loading="lazy" />
+    </figure>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__grid">
+      <div class="ftr__brand">
+        <img src="images/saltamontes-logo.png" alt="Saltamontes, tostadores de café" width="220" height="76" loading="lazy" />
+        <p>Tostadores de café de especialidad de los Andes venezolanos. De la montaña a la taza.</p>
+        <p class="mono ftr__jp">コーヒー焙煎所 · Est. Venezuela</p>
+      </div>
+      <nav aria-label="Explorar">
+        <h4 class="mono">Explorar</h4>
+        <a href="#tienda">Café</a>
+        <a href="#origen">Origen</a>
+        <a href="#club">Club Saltamontes</a>
+        <a href="#aprende">Cursos</a>
+        <a href="#mayorista">Mayorista</a>
+      </nav>
+      <nav aria-label="Servicios">
+        <h4 class="mono">Servicios</h4>
+        <a class="js-wa" data-wa="Hola, quiero asesoría para mi finca de café.">Asesoría en fincas</a>
+        <a class="js-wa" data-wa="Hola, quiero asesoría para mi torrefactora.">Asesoría en tueste</a>
+        <a class="js-wa" data-wa="Hola, quiero análisis sensorial / catas SCA para mis lotes.">Análisis y catas</a>
+        <a class="js-wa" data-wa="Hola, quiero capacitación para mis baristas.">Capacitación de baristas</a>
+      </nav>
+      <nav aria-label="Contacto">
+        <h4 class="mono">Contacto</h4>
+        <a class="js-wa" data-wa="Hola Saltamontes.">WhatsApp</a>
+        <a href="https://www.instagram.com/raulmartinez28" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+    </div>
+    <div class="ftr__bottom mono">
+      <span>© <span id="year">2026</span> Saltamontes · Tostadores de café de especialidad</span>
+      <span>Demo por GI Group</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+<script src="assets/app.js" defer></script>
+<script src="assets/effects.js" defer></script>
+</body>
+</html>
