@@ -702,6 +702,9 @@ html.has-cursor body { cursor: none; }
 
 @media (max-width: 700px) {
   .hide-sm { display: none; }
+  .hdr .btn__txt { display: none; }
+  .hdr .btn--sm { padding: .72rem .95rem; }
+  .brand__word { letter-spacing: .2em; font-size: .84rem; }
   .shop { grid-template-columns: 1fr; }
   .creds__grid { grid-template-columns: 1fr; }
   .cats { grid-template-columns: 1fr 1fr; }

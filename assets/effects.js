@@ -20,6 +20,13 @@
 
   const mm = gsap.matchMedia();
 
+  /* SplitText necesita las fuentes cargadas para partir bien las lineas.
+     Se espera a document.fonts con un tope de 900 ms para no retrasar nada. */
+  const fontsReady = Promise.race([
+    document.fonts ? document.fonts.ready : Promise.resolve(),
+    new Promise((resolve) => setTimeout(resolve, 900))
+  ]);
+
   /* =======================================================================
      1. PRELOADER — contador 0-100 y revelado del hero. Una vez por sesion.
      ======================================================================= */
@@ -39,6 +46,10 @@
   }
 
   mm.add("(prefers-reduced-motion: no-preference)", () => {
+    fontsReady.then(initMotion);
+  });
+
+  function initMotion() {
 
     if (doc.classList.contains("loading")) {
       const counter = { v: 0 };
@@ -221,10 +232,19 @@
       const label = document.getElementById("cursorLabel");
       if (cursor) {
         doc.classList.add("has-cursor");
+        gsap.set(cursor, { opacity: 0 });
         const cx = gsap.quickTo(cursor, "x", { duration: 0.28, ease: "power3.out" });
         const cy = gsap.quickTo(cursor, "y", { duration: 0.28, ease: "power3.out" });
 
-        window.addEventListener("pointermove", (e) => { cx(e.clientX); cy(e.clientY); });
+        let cursorSeen = false;
+        window.addEventListener("pointermove", (e) => {
+          if (!cursorSeen) {
+            cursorSeen = true;
+            gsap.set(cursor, { x: e.clientX, y: e.clientY });
+            gsap.to(cursor, { opacity: 1, duration: 0.2 });
+          }
+          cx(e.clientX); cy(e.clientY);
+        });
 
         document.addEventListener("pointerover", (e) => {
           const target = e.target.closest("[data-cursor]");
@@ -251,7 +271,7 @@
       return () => { doc.classList.remove("has-cursor"); };
     });
 
-  });
+  }
 
   /* Con reduced motion: nada de animacion, pero el preloader jamas bloquea */
   mm.add("(prefers-reduced-motion: reduce)", () => {
