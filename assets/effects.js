@@ -110,7 +110,8 @@
         });
       });
 
-      /* Titulares: lineas enmascaradas que suben al entrar */
+      /* Titulares: lineas enmascaradas que suben al entrar.
+         Bidireccional: se revierten al salir y se repiten al volver. */
       if (hasSplit) {
         document.querySelectorAll("[data-split]:not(.hero__title)").forEach((el) => {
           const split = new SplitText(el, { type: "lines", mask: "lines" });
@@ -119,7 +120,7 @@
             duration: 0.9,
             stagger: 0.08,
             ease: "power3.out",
-            scrollTrigger: { trigger: el, start: "top 86%", once: true }
+            scrollTrigger: { trigger: el, start: "top 86%", toggleActions: "play reverse play reverse" }
           });
         });
 
@@ -145,22 +146,23 @@
         }
       }
 
-      /* Reveals genericos */
+      /* Reveals genericos, bidireccionales */
       gsap.utils.toArray(".reveal").forEach((el) => {
         gsap.from(el, {
           y: 36,
           opacity: 0,
           duration: 0.9,
           ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 88%", once: true }
+          scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play reverse play reverse" }
         });
       });
 
-      /* Imagenes editoriales: revelado con clip-path + escala interna */
+      /* Imagenes editoriales: revelado con clip-path + escala interna,
+         bidireccional */
       gsap.utils.toArray(".reveal-img").forEach((fig) => {
         const img = fig.querySelector("img");
         const tl = gsap.timeline({
-          scrollTrigger: { trigger: fig, start: "top 85%", once: true }
+          scrollTrigger: { trigger: fig, start: "top 85%", toggleActions: "play reverse play reverse" }
         });
         tl.fromTo(fig,
           { clipPath: "inset(0 0 100% 0)" },
@@ -178,7 +180,8 @@
         });
       });
 
-      /* Contadores de credenciales y del club */
+      /* Contadores de credenciales y del club: vuelven a contar en cada
+         pasada, bajando o subiendo, y se reinician al salir por abajo */
       gsap.utils.toArray("[data-counter]").forEach((el) => {
         const target = parseInt(el.dataset.counter, 10) || 0;
         const obj = { v: 0 };
@@ -188,7 +191,7 @@
           ease: "power2.out",
           snap: { v: 1 },
           onUpdate: () => { el.textContent = Math.round(obj.v); },
-          scrollTrigger: { trigger: el, start: "top 88%", once: true }
+          scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "restart none restart reset" }
         });
       });
     }
