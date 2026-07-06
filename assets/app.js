@@ -71,13 +71,19 @@ const WHATSAPP_NUMBER = "584140000000";
   window.__applyShopFilter = apply;
 })();
 
-/* ---- 4. Header con borde al hacer scroll ---- */
-(function initHeader() {
-  const header = document.getElementById("header");
-  if (!header) return;
-  const onScroll = () => header.classList.toggle("is-stuck", window.scrollY > 8);
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
+/* ---- 4. Chrome (topbar + header): oculto sobre el hero, aparece al hacer scroll ----
+   Al tope, el hero de video se ve completo. Pasado un umbral, la barra baja. */
+(function initChrome() {
+  const chrome = document.getElementById("chrome");
+  if (!chrome) return;
+  const THRESHOLD = 120;
+
+  const update = () => chrome.classList.toggle("is-visible", window.scrollY > THRESHOLD);
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+
+  /* Teclado: si el foco entra a la barra (tab), se muestra aunque estemos al tope */
+  chrome.addEventListener("focusin", () => chrome.classList.add("is-visible"));
 })();
 
 /* ---- 5. Mega menu (hover en desktop, click y teclado siempre) ---- */

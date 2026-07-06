@@ -1,6 +1,6 @@
 /* =========================================================================
    SALTAMONTES — Capa de animacion GI Group.
-   Preloader, scroll cinematografico, micro-interacciones y cursor custom.
+   Preloader, scroll cinematografico y micro-interacciones (magnetico + tilt).
    Todo es aditivo: sin GSAP la pagina funciona y se ve completa.
    ========================================================================= */
 
@@ -224,51 +224,6 @@
         });
         card.addEventListener("pointerleave", () => { rx(0); ry(0); });
       });
-
-      /* ===================================================================
-         4. CURSOR CUSTOM
-         =================================================================== */
-      const cursor = document.getElementById("cursor");
-      const label = document.getElementById("cursorLabel");
-      if (cursor) {
-        doc.classList.add("has-cursor");
-        gsap.set(cursor, { opacity: 0 });
-        const cx = gsap.quickTo(cursor, "x", { duration: 0.28, ease: "power3.out" });
-        const cy = gsap.quickTo(cursor, "y", { duration: 0.28, ease: "power3.out" });
-
-        let cursorSeen = false;
-        window.addEventListener("pointermove", (e) => {
-          if (!cursorSeen) {
-            cursorSeen = true;
-            gsap.set(cursor, { x: e.clientX, y: e.clientY });
-            gsap.to(cursor, { opacity: 1, duration: 0.2 });
-          }
-          cx(e.clientX); cy(e.clientY);
-        });
-
-        document.addEventListener("pointerover", (e) => {
-          const target = e.target.closest("[data-cursor]");
-          const link = e.target.closest("a, button");
-          if (target) {
-            if (label) label.textContent = target.dataset.cursor;
-            gsap.to(cursor, { scale: 4.6, duration: 0.3, ease: "power3.out" });
-            if (label) gsap.to(label, { opacity: 1, duration: 0.2 });
-          } else if (link) {
-            gsap.to(cursor, { scale: 2.2, duration: 0.3, ease: "power3.out" });
-            if (label) gsap.to(label, { opacity: 0, duration: 0.15 });
-          }
-        });
-        document.addEventListener("pointerout", (e) => {
-          if (e.target.closest("[data-cursor], a, button")) {
-            gsap.to(cursor, { scale: 1, duration: 0.3, ease: "power3.out" });
-            if (label) gsap.to(label, { opacity: 0, duration: 0.15 });
-          }
-        });
-        document.addEventListener("pointerleave", () => gsap.to(cursor, { opacity: 0, duration: 0.2 }));
-        document.addEventListener("pointerenter", () => gsap.to(cursor, { opacity: 1, duration: 0.2 }));
-      }
-
-      return () => { doc.classList.remove("has-cursor"); };
     });
 
   }
