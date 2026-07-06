@@ -15,7 +15,29 @@
 
   const hasST = typeof window.ScrollTrigger !== "undefined";
   const hasSplit = typeof window.SplitText !== "undefined";
-  if (hasST) gsap.registerPlugin(ScrollTrigger);
+  if (hasST) {
+    gsap.registerPlugin(ScrollTrigger);
+    /* En moviles la barra de direccion se colapsa y expande al hacer scroll,
+       cambia la altura del viewport y ScrollTrigger recalcula en pleno
+       desplazamiento: los reveals bidireccionales se disparaban en reversa
+       y las secciones visibles se desvanecian. Con esto se ignoran esos
+       cambios de altura en pantallas tactiles. */
+    ScrollTrigger.config({ ignoreMobileResize: true });
+
+    /* Auto-sanado: un refresh (resize, rotacion, barra del navegador) puede
+       disparar reversas espurias sobre reveals que ya estan en pantalla y
+       dejarlos ocultos. Un instante despues de cada refresh se sincroniza:
+       todo lo que este dentro o pasado de su zona debe estar visible. */
+    ScrollTrigger.addEventListener("refresh", () => {
+      gsap.delayedCall(0.12, () => {
+        ScrollTrigger.getAll().forEach((st) => {
+          const anim = st.animation;
+          if (!anim || st.vars.scrub) return;
+          if (st.progress > 0 && (anim.reversed() || anim.progress() === 0)) anim.play();
+        });
+      });
+    });
+  }
   if (hasSplit) gsap.registerPlugin(SplitText);
 
   const mm = gsap.matchMedia();
